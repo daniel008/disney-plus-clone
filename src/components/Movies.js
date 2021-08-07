@@ -1,35 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
+import { selectMovies } from '../features/movie/movieSlice'
+import { useSelector } from 'react-redux'
 
 function Movies() {
+  const movies = useSelector(selectMovies)
+  console.log(movies)
+
   return (
     <Container>
       <h4>Recommended for You</h4>
       <Content>
-        <Wrap>
-          <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/togo-best-movies-disney-plus-1586212276.jpg" />
-        </Wrap>
-        <Wrap>
-          <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/togo-best-movies-disney-plus-1586212276.jpg" />
-        </Wrap>
-        <Wrap>
-          <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/togo-best-movies-disney-plus-1586212276.jpg" />
-        </Wrap>
-        <Wrap>
-          <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/togo-best-movies-disney-plus-1586212276.jpg" />
-        </Wrap>
-        <Wrap>
-          <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/togo-best-movies-disney-plus-1586212276.jpg" />
-        </Wrap>
-        <Wrap>
-          <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/togo-best-movies-disney-plus-1586212276.jpg" />
-        </Wrap>
-        <Wrap>
-          <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/togo-best-movies-disney-plus-1586212276.jpg" />
-        </Wrap>
-        <Wrap>
-          <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/togo-best-movies-disney-plus-1586212276.jpg" />
-        </Wrap>
+        {movies &&
+          movies.map((movie) => (
+            <Wrap key={movie.id}>
+              <img src={movie.cardImg} />
+            </Wrap>
+          ))}
       </Content>
     </Container>
   )
