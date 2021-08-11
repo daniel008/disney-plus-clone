@@ -1,38 +1,55 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { useParams } from 'react-router-dom'
+import db from '../firebase'
 
 function Detail() {
+  const { id } = useParams()
+  const [movie, setMovie] = useState()
+
+  useEffect(() => {
+    // Grab the movie info from DB
+    db.collection('movies')
+      .doc(id)
+      .get()
+      .then((doc) => {
+        // save the movie data
+        if (doc.exists) setMovie(doc.data())
+        // if not exists then redirect to home page
+        return
+      })
+  }, [])
+
   return (
     <Container>
-      <Background>
-        {/* <img src="https://bingeddata.s3.amazonaws.com/uploads/2020/11/bao-1.jpg" /> */}
-        <img src="https://is5-ssl.mzstatic.com/image/thumb/Video114/v4/b8/47/14/b8471405-8fe3-0025-8349-24347f34a8c2/1443024733-WW-AMP_SF.lsr/1200x675.jpg" />
-      </Background>
-      <ImageTitle>
-        {/* <img src="https://pbs.twimg.com/media/EJNgi7cXYAExhC1.png" /> */}
-      </ImageTitle>
-      <Controls>
-        <PlayButton>
-          <img src="/images/play-icon-black.png" />
-          <span>PLAY</span>
-        </PlayButton>
-        <TrailerButton>
-          <img src="/images/play-icon-white.png" />
-          <span>Trailer</span>
-        </TrailerButton>
-        <AddButton>
-          <span>+</span>
-        </AddButton>
-        <GroupWatchButton>
-          <img src="/images/group-icon.png" />
-        </GroupWatchButton>
-      </Controls>
-      <SubTitle>2018 • 7m • Family Fantasy, Kids, Animation</SubTitle>
-      <Description>
-        A Chinese mom who's sad when her grown son leaves home gets another
-        chance at motherhood when one of her dumplings springs to life. But she
-        finds that nothing stays cute and small forever.
-      </Description>
+      {movie && (
+        <>
+          <Background>
+            <img src={movie.backgroundImg} />
+          </Background>
+          <ImageTitle>
+            <img src={movie.titleImg} />
+          </ImageTitle>
+          <Controls>
+            <PlayButton>
+              <img src="/images/play-icon-black.png" />
+              <span>PLAY</span>
+            </PlayButton>
+            <TrailerButton>
+              <img src="/images/play-icon-white.png" />
+              <span>Trailer</span>
+            </TrailerButton>
+            <AddButton>
+              <span>+</span>
+            </AddButton>
+            <GroupWatchButton>
+              <img src="/images/group-icon.png" />
+            </GroupWatchButton>
+          </Controls>
+          <SubTitle>{movie.subTitle}</SubTitle>
+          <Description>{movie.description}</Description>
+        </>
+      )}
     </Container>
   )
 }
