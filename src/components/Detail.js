@@ -25,25 +25,25 @@ function Detail() {
       {movie && (
         <>
           <Background>
-            <img src={movie.backgroundImg} />
+            <img src={movie.backgroundImg} alt="" />
           </Background>
           <ImageTitle>
-            <img src={movie.titleImg} />
+            <img src={movie.titleImg} alt="" />
           </ImageTitle>
           <Controls>
             <PlayButton>
-              <img src="/images/play-icon-black.png" />
+              <img src="/images/play-icon-black.png" alt="" />
               <span>PLAY</span>
             </PlayButton>
             <TrailerButton>
-              <img src="/images/play-icon-white.png" />
+              <img src="/images/play-icon-white.png" alt="" />
               <span>Trailer</span>
             </TrailerButton>
             <AddButton>
               <span>+</span>
             </AddButton>
             <GroupWatchButton>
-              <img src="/images/group-icon.png" />
+              <img src="/images/group-icon.png" alt="" />
             </GroupWatchButton>
           </Controls>
           <SubTitle>{movie.subTitle}</SubTitle>

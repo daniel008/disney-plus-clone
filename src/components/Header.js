@@ -66,28 +66,28 @@ function Header() {
       ) : (
         <>
           <NavMenu>
-            <a>
-              <img src="/images/home-icon.svg" />
+            <a href>
+              <img src="/images/home-icon.svg" alt="" />
               <span>HOME</span>
             </a>
-            <a>
-              <img src="/images/search-icon.svg" />
+            <a href>
+              <img src="/images/search-icon.svg" alt="" />
               <span>SEARCH</span>
             </a>
-            <a>
-              <img src="/images/watchlist-icon.svg" />
+            <a href>
+              <img src="/images/watchlist-icon.svg" alt="" />
               <span>WATCHLIST</span>
             </a>
-            <a>
-              <img src="/images/original-icon.svg" />
+            <a href>
+              <img src="/images/original-icon.svg" alt="" />
               <span>ORIGINAL</span>
             </a>
-            <a>
-              <img src="/images/movie-icon.svg" />
+            <a href>
+              <img src="/images/movie-icon.svg" alt="" />
               <span>MOVIES</span>
             </a>
-            <a>
-              <img src="/images/series-icon.svg" />
+            <a href>
+              <img src="/images/series-icon.svg" alt="" />
               <span>SERIES</span>
             </a>
           </NavMenu>
