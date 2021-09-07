@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import {
   selectUserName,
-  selectUserPhoto,
   setUserLogin,
   setSignOut,
 } from '../features/user/userSlice'
@@ -14,7 +13,6 @@ function Header() {
   const dispatch = useDispatch()
   const history = useHistory()
   const userName = useSelector(selectUserName)
-  const userPhoto = useSelector(selectUserPhoto)
 
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
@@ -29,7 +27,7 @@ function Header() {
         history.push('/')
       }
     })
-  }, [])
+  }, [dispatch, history])
 
   const signIn = () => {
     auth.signInWithPopup(provider).then((result) => {
@@ -93,7 +91,7 @@ function Header() {
           </NavMenu>
           <UserImg
             onClick={signOut}
-            src="https://scontent-hkt1-1.xx.fbcdn.net/v/t1.6435-1/p200x200/40633647_669479883425339_4734202924073222144_n.jpg?_nc_cat=101&ccb=1-3&_nc_sid=7206a8&_nc_ohc=nnD2eEhdpv0AX-kph1C&_nc_ht=scontent-hkt1-1.xx&oh=db94ac15652714a53b048217cb3eef00&oe=612F3C82"
+            src="https://scontent-sin6-4.xx.fbcdn.net/v/t1.6435-1/p480x480/40633647_669479883425339_4734202924073222144_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=7206a8&_nc_ohc=0HsNs0Z2F0YAX-klLjO&_nc_ht=scontent-sin6-4.xx&oh=2411762ede6ec9ac3b1893f9da65369d&oe=615C2535"
           />
         </>
       )}

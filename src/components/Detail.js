@@ -18,7 +18,7 @@ function Detail() {
         // if not exists then redirect to home page
         return
       })
-  }, [])
+  })
 
   return (
     <Container>
