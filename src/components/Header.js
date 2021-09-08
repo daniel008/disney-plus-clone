@@ -27,7 +27,7 @@ function Header() {
         history.push('/')
       }
     })
-  }, [dispatch, history])
+  }, [])
 
   const signIn = () => {
     auth.signInWithPopup(provider).then((result) => {
